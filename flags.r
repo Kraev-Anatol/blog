@@ -1,3 +1,6 @@
+# ggflags package example,
+# Top 10 countries in female fertility rating
+
 library(tidyverse)
 library(ggplot2)
 library(ggflags)
@@ -14,11 +17,13 @@ topFert %>% mutate(country = reorder(country, -count)) %>%
   geom_text(nudge_y = 0.2, color = "darkred", size = 5) +
   geom_flag(y = -.5, aes(country = code), size = 12) +
   xlab("") + 
-  ylab("Среднее количество детей рожденых женщиной в течении жизни") +
-  ggtitle("10 стран с наибольшей фертильностью среди женщин") +
-  #geom_text(aes(5.5, 3.5, label = "Top 10 countries of female fertility"), size = 7) +
+  ylab("Среднее количество детей \n рожденых женщиной в течении жизни") +
+  ggtitle(toupper("10 стран с наибольшей фертильностью среди женщин")) +
+  
   ggthemes::theme_economist() +
   theme(axis.text.x = element_text(size = 10, vjust = -12, color = "red"),
        axis.ticks.x = element_blank(),
        axis.line.x = element_blank(),
+       axis.title.y = element_text(color = "grey20", size = 14, vjust = 2, hjust = 0.5),
+       plot.title = element_text(hjust = 0.5),
         plot.margin = unit(c(1,1,1,1), "cm")) 
